@@ -58,7 +58,7 @@
 
 	UIImage *maskImage = [UIImage imageNamed:@"Mask"];
 	_maskLayer = [CALayer layer];
-	[_maskLayer setContents:(id)[maskImage CGImage]];
+	[_maskLayer setContents:(__bridge id)[maskImage CGImage]];
 	[_hideableView.layer setMask:_maskLayer];
 
 	_hideRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideView)];
@@ -101,8 +101,6 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 	[_hideableView setHidden:YES];
-	//[_hideableView setUserInteractionEnabled:NO];
-	//[_hideRecognizer setEnabled:NO];
 }
 
 - (void)showView {
